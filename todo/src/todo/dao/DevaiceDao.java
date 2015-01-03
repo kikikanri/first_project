@@ -2,17 +2,17 @@ package todo.dao;
 
 import java.sql.SQLException;
 
-public class TodoDao  {
+public class DevaiceDao  {
 
 	public boolean entry(String userid, String str){
 
 		try {
-			TodoList todo = BaseDao.getInstance().getEntityManager().create(TodoList.class);
+			DevaiceList devaice = BaseDao.getInstance().getEntityManager().create(DevaiceList.class);
 
-			todo.setTodo(str);
-			todo.setUserid(userid);
+			devaice.setTodo(str);
+			devaice.setUserid(userid);
 
-			todo.save();
+			devaice.save();
 
 			return true;
 
@@ -23,11 +23,11 @@ public class TodoDao  {
 	}
 
 	// 全データ取得
-	public TodoList[] getAll(String userid) {
+	public DevaiceList[] getAllDevices() {
 
 		try {
 			return BaseDao.getInstance()
-				.getEntityManager().find(TodoList.class, "userid=? and valid=?", userid, 1);
+				.getEntityManager().find(DevaiceList.class, "userid=?");
 
 		} catch (SQLException e) {
 		    System.out.println(e.getMessage());
@@ -38,7 +38,7 @@ public class TodoDao  {
 	// データ更新
 	public void setFinish(String id)  {
 
-		TodoList todo = BaseDao.getInstance().getEntityManager().get(TodoList.class,Integer.valueOf(id));
+		DevaiceList todo = BaseDao.getInstance().getEntityManager().get(DevaiceList.class,Integer.valueOf(id));
 
 		todo.setValid(0);
 		todo.save();

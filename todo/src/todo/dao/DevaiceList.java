@@ -3,9 +3,9 @@ package todo.dao;
 import java.util.Date;
 
 import net.java.ao.Entity;
-import net.java.ao.schema.*;
+import net.java.ao.schema.Default;
 
-public interface TodoList extends Entity  {
+public interface DevaiceList extends Entity  {
 
 	@Default("")
 	public String getUserid();
