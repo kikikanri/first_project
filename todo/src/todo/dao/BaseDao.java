@@ -11,7 +11,7 @@ public class BaseDao {
 	private BaseDao(){
 
 		manager =
-			new EntityManager("jdbc:mysql://localhost/todo", "root", "wings");
+				new EntityManager("jdbc:mysql://192.168.3.97/kikidb", "root", "password");
 	}
 
 	// インスタンス取得メソッド
