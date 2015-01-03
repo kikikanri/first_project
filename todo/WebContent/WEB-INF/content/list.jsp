@@ -19,7 +19,11 @@
 
 <s:form action="finish" >
 <s:iterator value="DeviceList">
-  <s:property/><br>
+  <s:property value="deviceid" />
+  <s:property value="devicenm" />
+  <s:property value="os" />
+  <s:property value="office" />
+  <br>
 </s:iterator>
 <s:submit value="Finish"/>
 </s:form>
