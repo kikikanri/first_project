@@ -1,6 +1,6 @@
 package todo.dao;
 
-public class DeviceModel {
+public class DevicesModel {
 
 	private String no;
 	private String deviceid;

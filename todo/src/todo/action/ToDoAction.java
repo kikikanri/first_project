@@ -6,8 +6,8 @@ import org.apache.struts2.convention.annotation.InterceptorRefs;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
-import todo.dao.DeviceDao;
-import todo.dao.DeviceList;
+import todo.dao.Devices;
+import todo.dao.DevicesDao;
 
 @InterceptorRefs({
 	@InterceptorRef(value="scopedModelDriven",params={"scope","session"}),
@@ -24,9 +24,14 @@ public class ToDoAction extends ToDoBaseAction {
 //	private String todoStr;		// To-Do追加データ用
 //	private String todoid[];	// To-Do更新用
 
-	// To-Do一覧
-	public DeviceList[] getDeviceList() {
-		DeviceDao dev = new DeviceDao();
+//	// To-Do一覧
+//	public DeviceList[] getDeviceList() {
+//		DeviceDao dev = new DeviceDao();
+//   	    return dev.getAllDevice();
+//	}
+
+	public Devices[] getDeviceList() {
+		DevicesDao dev = new DevicesDao();
    	    return dev.getAllDevice();
 	}
 

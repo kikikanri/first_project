@@ -1,16 +1,16 @@
 package todo.action;
 
-import todo.dao.DeviceModel;
+import todo.dao.DevicesModel;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.interceptor.ScopedModelDriven;
 
 public class ToDoBaseAction extends ActionSupport implements
-		ScopedModelDriven<DeviceModel> {
+		ScopedModelDriven<DevicesModel> {
 
 	private static final long serialVersionUID = 1L;
 
-	protected DeviceModel user; // LoginModelクラス
+	protected DevicesModel user; // LoginModelクラス
 	private String scopeKey; // セッションでのModelオブジェクト識別キー
 
 	@Override
@@ -23,12 +23,12 @@ public class ToDoBaseAction extends ActionSupport implements
 	}
 
 	@Override
-	public DeviceModel getModel() {
+	public DevicesModel getModel() {
 		return user;
 	}
 
 	@Override
-	public void setModel(DeviceModel model) {
+	public void setModel(DevicesModel model) {
 		this.user = model;
 	}
 

@@ -5,21 +5,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TodoList</title>
+<title>機器一覧</title>
 </head>
 <body>
 
-<s:property value="username" />さんのToDo管理<br /><br />
+<s:property value="username" />追加内容入力<br /><br />
 
 <s:form action="entryexec" >
 <s:textfield name="todoStr" label="ToDo" size="50"/>
-<s:submit value="Add TODO"/>
+<s:submit value="機器を追加します"/>
 </s:form>
 <s:actionmessage  />
 
 <s:form action="finish" >
-<s:iterator value="TodoList">
-  <s:checkboxlist list="top" listKey="ID" name="todoid" listValue="todo" theme="simple" /><br>
+<s:iterator value="DeviceList">
+  <s:property/><br>
 </s:iterator>
 <s:submit value="Finish"/>
 </s:form>

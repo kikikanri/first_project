@@ -2,7 +2,7 @@ package todo.dao;
 
 import java.sql.SQLException;
 
-public class DeviceDao  {
+public class DevicesDao  {
 
 //	public boolean entry(String userid, String str){
 //
@@ -23,14 +23,17 @@ public class DeviceDao  {
 //	}
 
 	// 全データ取得
-	public DeviceList[] getAllDevice() {
+	public Devices[] getAllDevice() {
 
 		try {
 			return BaseDao.getInstance()
-				.getEntityManager().find(DeviceList.class, "userid=?");
+				.getEntityManager().find(Devices.class);
 
 		} catch (SQLException e) {
+			e.printStackTrace();
 		    System.out.println(e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return null;
 	}
