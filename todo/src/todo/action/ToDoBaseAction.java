@@ -10,26 +10,22 @@ public class ToDoBaseAction extends ActionSupport implements
 
 	private static final long serialVersionUID = 1L;
 
-	protected DevicesModel user; // LoginModelクラス
+	protected DevicesModel dev; // LoginModelクラス
 	private String scopeKey; // セッションでのModelオブジェクト識別キー
 
 	@Override
 	public void validate() {
 
-//		// ログイン済み?
-//		if (this.user.getState() != 1) {
-//			addActionError("ログインしてください");
-//		}
 	}
 
 	@Override
 	public DevicesModel getModel() {
-		return user;
+		return dev;
 	}
 
 	@Override
 	public void setModel(DevicesModel model) {
-		this.user = model;
+		this.dev = model;
 	}
 
 	@Override

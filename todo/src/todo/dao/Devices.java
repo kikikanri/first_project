@@ -10,8 +10,25 @@ public interface Devices extends Entity  {
 
 	@PrimaryKey
 	@Default("")
+	public String getNo();
+	public void setNo(String no);
+
+	@PrimaryKey
+	@Default("")
+	public String getDeviceid();
+	public void setDeviceid(String deviceid);
+
+	@Default("")
+	public String getDevicenm();
+	public void setDevicenm(String deviceid);
+
+	@Default("")
 	public String getOs();
 	public void setOs(String os);
+
+	@Default("")
+	public String getOffice();
+	public void setOffice(String office);
 
 //	@Default("CURRENT_TIMESTAMP")
 //	public Date getDeadline();
