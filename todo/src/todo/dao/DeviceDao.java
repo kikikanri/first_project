@@ -27,7 +27,7 @@ public class DeviceDao  {
 
 		try {
 			return BaseDao.getInstance()
-				.getEntityManager().find(DeviceList.class, "userid=?");
+				.getEntityManager().find(DeviceList.class);
 
 		} catch (SQLException e) {
 		    System.out.println(e.getMessage());
