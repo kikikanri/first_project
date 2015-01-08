@@ -1,5 +1,7 @@
 package todo.dao;
 
+import java.util.Date;
+
 import net.java.ao.Entity;
 import net.java.ao.schema.Default;
 import net.java.ao.schema.PrimaryKey;
@@ -20,7 +22,7 @@ public interface Devices extends Entity  {
 
 	@Default("")
 	public String getDevicenm();
-	public void setDevicenm(String deviceid);
+	public void setDevicenm(String devicenm);
 
 	@Default("")
 	public String getOs();
@@ -30,16 +32,17 @@ public interface Devices extends Entity  {
 	public String getOffice();
 	public void setOffice(String office);
 
-//	@Default("CURRENT_TIMESTAMP")
-//	public Date getDeadline();
-//	public void setDeadline(Date deadline);
-//
-//	@Default("")
-//	public String getTodo();
-//	public void setTodo(String todo);
-//
-//	@Default("1")
-//	public int getValid();
-//	public void setValid(int valid);
+	@Default("")
+	public String getOther1();
+	public void setOther1(String other1);
+
+	@Default("")
+	public Date getCreateDate();
+	public void setCreateDate(Date createdate);
+
+	@Default("CURRENT_TIMESTAMP")
+	public Date getUpdateDate();
+	public void setUpdateDate(Date updatedate);
+
 
 }
