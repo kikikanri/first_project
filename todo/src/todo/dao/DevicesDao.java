@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class DevicesDao  {
-
 	public boolean entry(String deviceid, String devicenm, String os, String office, String other1){
 
 		try {
@@ -47,13 +46,19 @@ public class DevicesDao  {
 		return null;
 	}
 
-//	// データ更新
-//	public void setFinish(String id)  {
-//
-//		Devices todo = BaseDao.getInstance().getEntityManager().get(Devices.class,Integer.valueOf(id));
-//
-//		todo.setValid(0);
-//		todo.save();
-//	}
+	// データ更新
+	public void setFinish(String deviceid, String os, String office, String other1)  {
 
+		Date updatedate = new Date();
+		Devices device = BaseDao.getInstance().getEntityManager().get(Devices.class,Integer.valueOf(deviceid));
+
+		device.setOs(os);
+		device.setOffice(office);
+		device.setOther1(other1);
+		device.setUpdateDate(updatedate);
+
+		device.save();
+	}
+
+	
 }
