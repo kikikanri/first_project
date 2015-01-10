@@ -32,6 +32,7 @@ border: 1px solid #b9b9b9;
 [アイコン]機器管理一覧<br /><br />
 
 <s:form action="entryexec" >
+
 <table class="table">
 <tr>
 <td>端末NO</td>
@@ -40,17 +41,17 @@ border: 1px solid #b9b9b9;
 <td>OFFICEバージョン</td>
 <td>備考</td>
 </tr>
-<tr>
-<td><input type="text" name="deviceid" value="" id="entryexec_todoStr1"/></td>
-<td><input type="text" name="devicenm" value="" id="entryexec_todoStr2"/></td>
-<td><input type="text" name="os" value="" id="entryexec_todoStr3"/></td>
-<td><input type="text" name="office" value="" id="entryexec_todoStr4"/></td>
-<td><input type="text" name="other1" value="" id="entryexec_todoStr5"/></td>
-</tr>
 </table>
+<s:textfield name="deviceid" />
+<s:textfield name="devicenm" />
+<s:textfield name="os" />
+<s:textfield name="office" />
+<s:textfield name="other1" />
+
 <s:submit value="機器を追加します"/>
 </s:form>
 <s:actionmessage  />
+
 <s:form action="finish" >
 <table class="table">
 <tr>

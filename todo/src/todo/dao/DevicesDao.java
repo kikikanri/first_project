@@ -13,7 +13,7 @@ public class DevicesDao  {
 
 			Devices device = BaseDao.getInstance().getEntityManager().create(Devices.class);
 
-			device.setNo(deviceid);
+			device.setDeviceid(deviceid);
 			device.setDevicenm(devicenm);
 			device.setOs(os);
 			device.setOffice(office);
@@ -27,6 +27,9 @@ public class DevicesDao  {
 
 		} catch (SQLException e) {
 		    System.out.println(e.getMessage());
+		    e.printStackTrace();
+		} catch (Exception ee){
+			ee.printStackTrace();
 		}
 		return false;
 	}
