@@ -9,6 +9,8 @@ import org.apache.struts2.convention.annotation.Results;
 import todo.dao.Devices;
 import todo.dao.DevicesDao;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 @InterceptorRefs({
 	@InterceptorRef(value="scopedModelDriven",params={"scope","session"}),
 	@InterceptorRef("defaultStack")
@@ -17,7 +19,7 @@ import todo.dao.DevicesDao;
 	  @Result(name="input", location="login.jsp"),
 	  @Result(name="success", location ="list.jsp" )
 })
-public class ToDoAction extends ToDoBaseAction {
+public class ToDoAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 
@@ -49,6 +51,8 @@ public class ToDoAction extends ToDoBaseAction {
 	public String entryexec() throws Exception {
 
 	    DevicesDao todo = new DevicesDao();
+
+	    String aa = this.getDeviceid();
 
 	    todo.entry( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
    		return "success";
