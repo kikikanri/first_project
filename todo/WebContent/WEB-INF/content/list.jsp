@@ -29,16 +29,23 @@ border: 1px solid #b9b9b9;
 </head>
 <body>
 
-<s:property value="username" />追加内容入力<br /><br />
+[アイコン]機器管理一覧<br /><br />
 
 <s:form action="entryexec" >
 <table class="table">
 <tr>
-<td><input type="text" name="todoStr1" value="" id="entryexec_todoStr1"/></td>
-<td><input type="text" name="todoStr2" value="" id="entryexec_todoStr2"/></td>
-<td><input type="text" name="todoStr3" value="" id="entryexec_todoStr3"/></td>
-<td><input type="text" name="todoStr4" value="" id="entryexec_todoStr4"/></td>
-<td><input type="text" name="todoStr5" value="" id="entryexec_todoStr5"/></td>
+<td>端末NO</td>
+<td>端末名称</td>
+<td>OS名</td>
+<td>OFFICEバージョン</td>
+<td>備考</td>
+</tr>
+<tr>
+<td><input type="text" name="deviceid" value="" id="entryexec_todoStr1"/></td>
+<td><input type="text" name="devicenm" value="" id="entryexec_todoStr2"/></td>
+<td><input type="text" name="os" value="" id="entryexec_todoStr3"/></td>
+<td><input type="text" name="office" value="" id="entryexec_todoStr4"/></td>
+<td><input type="text" name="other1" value="" id="entryexec_todoStr5"/></td>
 </tr>
 </table>
 <s:submit value="機器を追加します"/>
@@ -51,6 +58,7 @@ border: 1px solid #b9b9b9;
 <td>端末名称</td>
 <td>OS名</td>
 <td>OFFICEバージョン</td>
+<td>備考</td>
 </tr>
 <s:iterator value="DeviceList">
 <tr>
@@ -58,6 +66,7 @@ border: 1px solid #b9b9b9;
   <td><s:property value="devicenm" /></td>
   <td><s:property value="os" /></td>
   <td><s:property value="office" /></td>
+  <td><s:property value="other1" /></td>
 </tr>
 </s:iterator>
 </table>
