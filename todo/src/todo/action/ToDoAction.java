@@ -49,6 +49,7 @@ public class ToDoAction extends ToDoBaseAction {
 	public String entryexec() throws Exception {
 
 	    DevicesDao todo = new DevicesDao();
+
 	    todo.entry( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
    		return "success";
 	}
