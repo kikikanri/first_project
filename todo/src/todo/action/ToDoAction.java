@@ -52,8 +52,6 @@ public class ToDoAction extends ActionSupport {
 
 	    DevicesDao todo = new DevicesDao();
 
-	    String aa = this.getDeviceid();
-
 	    todo.entry( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
    		return "success";
 	}

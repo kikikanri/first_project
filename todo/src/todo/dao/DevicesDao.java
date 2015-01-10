@@ -12,6 +12,12 @@ public class DevicesDao  {
 
 			Devices device = BaseDao.getInstance().getEntityManager().create(Devices.class);
 
+			deviceid = new String(deviceid.getBytes("ISO-8859-1"), "UTF-8");
+			devicenm = new String(devicenm.getBytes("ISO-8859-1"), "UTF-8");
+			os = new String(os.getBytes("ISO-8859-1"), "UTF-8");
+			office = new String(office.getBytes("ISO-8859-1"), "UTF-8");
+			other1 = new String(other1.getBytes("ISO-8859-1"), "UTF-8");
+
 			device.setDeviceid(deviceid);
 			device.setDevicenm(devicenm);
 			device.setOs(os);
@@ -63,5 +69,5 @@ public class DevicesDao  {
 		device.save();
 	}
 
-	
+
 }
