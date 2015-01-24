@@ -16,7 +16,6 @@ import com.opensymphony.xwork2.ActionSupport;
 	@InterceptorRef("defaultStack")
 })
 @Results({
-	  @Result(name="input", location="login.jsp"),
 	  @Result(name="success", location ="list.jsp" )
 })
 public class ToDoAction extends ActionSupport {
@@ -29,13 +28,7 @@ public class ToDoAction extends ActionSupport {
 	private String office;
 	private String other1;
 
-//	// To-Do一覧
-//	public DeviceList[] getDeviceList() {
-//		DeviceDao dev = new DeviceDao();
-//   	    return dev.getAllDevice();
-//	}
-
-	public Devices[] getDeviceList() {
+	public Devices[] getDeviceList() throws Exception{
 		DevicesDao dev = new DevicesDao();
    	    return dev.getAllDevice();
 	}
@@ -46,13 +39,40 @@ public class ToDoAction extends ActionSupport {
    		return "success";
 	}
 
-//	// ToDo追加
+	// 追加
 	@Action("/entryexec")
 	public String entryexec() throws Exception {
 
 	    DevicesDao todo = new DevicesDao();
 
+	    if(todo.isDeviceIDExist(this.getDeviceid())){
+	    	// メッセージセット
+	    	addActionError("IDありますよ");
+	    	addActionMessage("IDありますよ");
+	    	return "success";
+	    }
+
 	    todo.entry( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
+   		return "success";
+	}
+
+	// 更新
+	@Action("/updateexec")
+	public String updateexec() throws Exception {
+
+	    DevicesDao todo = new DevicesDao();
+
+	    todo.update( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
+   		return "success";
+	}
+
+	// 削除
+	@Action("/deleteexec")
+	public String deleteexec() throws Exception {
+
+	    DevicesDao todo = new DevicesDao();
+
+	    todo.delete( this.getDeviceid());
    		return "success";
 	}
 
@@ -95,26 +115,5 @@ public class ToDoAction extends ActionSupport {
 	public void setOther1(String other1) {
 		this.other1 = other1;
 	}
-
-//	// ToDo更新
-//	@Action("/finish")
-//	public String finish() throws Exception {
-//
-//	    DevicesDao todo = new DevicesDao();
-//	    if (this.getTodoid() != null ) {
-//	    	for ( String id : this.getTodoid() ) {
-//	    		todo.setFinish(id);
-//	    	}
-//	    }
-//   		return "success";
-//	}
-//
-//	// データ更新用
-//	public void setTodoid( String [] todoid ) {
-//		this.todoid = todoid;
-//	}
-//	public String [] getTodoid() {
-//		return this.todoid;
-//	}
 
 }

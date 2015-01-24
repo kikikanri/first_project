@@ -15,7 +15,6 @@ public interface Devices extends Entity  {
 	public String getNo();
 	public void setNo(String no);
 
-	@PrimaryKey
 	@Default("")
 	public String getDeviceid();
 	public void setDeviceid(String deviceid);

@@ -50,6 +50,35 @@ border: 1px solid #b9b9b9;
 
 <s:submit value="機器を追加します"/>
 </s:form>
+
+
+▼テスト用フォーム（削除）
+<s:form action="deleteexec" >
+端末NO：<s:textfield name="deviceid" />
+<s:submit value="機器を削除"/>
+</s:form>
+
+▼テスト用フォーム（更新）
+<s:form action="updateexec" >
+<table class="table">
+<tr>
+<td>端末NO(更新キーです)</td>
+<td>端末名称</td>
+<td>OS名</td>
+<td>OFFICEバージョン</td>
+<td>備考</td>
+</tr>
+</table>
+<s:textfield name="deviceid" />
+<s:textfield name="devicenm" />
+<s:textfield name="os" />
+<s:textfield name="office" />
+<s:textfield name="other1" />
+
+<s:submit value="機器を更新します"/>
+</s:form>
+
+
 <s:actionmessage  />
 
 <s:form action="finish" >
