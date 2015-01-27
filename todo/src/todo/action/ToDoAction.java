@@ -79,7 +79,7 @@ public class ToDoAction extends ActionSupport {
 	    DevicesDao todo = new DevicesDao();
 
 	    todo.delete( this.getDeviceid());
-   		return "success";
+   		return "top";
 	}
 
 	public String getDeviceid() {
