@@ -55,6 +55,13 @@ public class ToDoAction extends ActionSupport {
 	    	// メッセージセット
 	    	addActionError("IDありますよ");
 	    	addActionMessage("IDありますよ");
+
+	    	this.setDeviceid(new String(deviceid.getBytes("ISO-8859-1"), "UTF-8"));
+	    	this.setDevicenm(new String(devicenm.getBytes("ISO-8859-1"), "UTF-8"));
+	    	this.setOs(new String(os.getBytes("ISO-8859-1"), "UTF-8"));
+	    	this.setOffice(new String(office.getBytes("ISO-8859-1"), "UTF-8"));
+	    	this.setOther1(new String(other1.getBytes("ISO-8859-1"), "UTF-8"));
+
 	    	return "success";
 	    }
 
