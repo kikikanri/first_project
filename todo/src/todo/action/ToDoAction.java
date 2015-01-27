@@ -16,7 +16,13 @@ import com.opensymphony.xwork2.ActionSupport;
 	@InterceptorRef("defaultStack")
 })
 @Results({
-	  @Result(name="success", location ="list.jsp" )
+	  @Result(name="success", location ="list.jsp" ),
+	  @Result(name = "top",
+	  	type = "redirectAction",
+	            params = {
+                "actionName" , "admin"
+          }
+	  	),
 })
 public class ToDoAction extends ActionSupport {
 
@@ -53,7 +59,7 @@ public class ToDoAction extends ActionSupport {
 	    }
 
 	    todo.entry( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
-   		return "success";
+   		return "top";
 	}
 
 	// 更新
@@ -63,7 +69,7 @@ public class ToDoAction extends ActionSupport {
 	    DevicesDao todo = new DevicesDao();
 
 	    todo.update( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
-   		return "success";
+   		return "top";
 	}
 
 	// 削除
