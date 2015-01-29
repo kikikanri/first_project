@@ -55,6 +55,7 @@ border: 1px solid #b9b9b9;
 
 <s:actionmessage  />
 
+<div class="container">
 <table class="table">
 <tr>
 <td>端末NO</td>
@@ -67,21 +68,27 @@ border: 1px solid #b9b9b9;
 </tr>
 <s:iterator value="DeviceList">
 <tr>
-<s:form action="updateexec" >
+<form action="updateexec" >
   <td><input type="text" name="deviceid" value="<s:property value="deviceid" />"></td>
   <td><input type="text" name="devicenm" value="<s:property value="devicenm" />"></td>
   <td><input type="text" name="os" value="<s:property value="os" />"></td>
   <td><input type="text" name="office" value="<s:property value="office" />"></td>
   <td><input type="text" name="other1" value="<s:property value="other1" />"></td>
   <td><input type="submit" value="変更する"/></td>
-</s:form>
-<s:form action="deleteexec" >
+</form>
+<form action="deleteexec" >
   <td><input type="hidden" name="deviceid" value="<s:property value="deviceid" />"></td>
   <td><input type="submit" value="削除する"/></td>
-</s:form>
+</form>
 </tr>
 </s:iterator>
 </table>
+</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 
 </body>
 </html>
