@@ -41,47 +41,20 @@ border: 1px solid #b9b9b9;
 <td>OFFICEバージョン</td>
 <td>備考</td>
 </tr>
+<tr>
+<td><input type="text" name="deviceid" /></td>
+<td><input type="text" name="devicenm" /></td>
+<td><input type="text" name="os" /></td>
+<td><input type="text" name="office" /></td>
+<td><input type="text" name="other1" /></td>
+</tr>
 </table>
-<s:textfield name="deviceid" />
-<s:textfield name="devicenm" />
-<s:textfield name="os" />
-<s:textfield name="office" />
-<s:textfield name="other1" />
 
 <s:submit value="機器を追加します"/>
 </s:form>
 
-
-▼テスト用フォーム（削除）
-<s:form action="deleteexec" >
-端末NO：<s:textfield name="deviceid" />
-<s:submit value="機器を削除"/>
-</s:form>
-
-▼テスト用フォーム（更新）
-<s:form action="updateexec" >
-<table class="table">
-<tr>
-<td>端末NO(更新キーです)</td>
-<td>端末名称</td>
-<td>OS名</td>
-<td>OFFICEバージョン</td>
-<td>備考</td>
-</tr>
-</table>
-<s:textfield name="deviceid" />
-<s:textfield name="devicenm" />
-<s:textfield name="os" />
-<s:textfield name="office" />
-<s:textfield name="other1" />
-
-<s:submit value="機器を更新します"/>
-</s:form>
-
-
 <s:actionmessage  />
 
-<s:form action="finish" >
 <table class="table">
 <tr>
 <td>端末NO</td>
@@ -89,19 +62,26 @@ border: 1px solid #b9b9b9;
 <td>OS名</td>
 <td>OFFICEバージョン</td>
 <td>備考</td>
+<td></td>
+<td></td>
 </tr>
 <s:iterator value="DeviceList">
 <tr>
-  <td><s:property value="deviceid" /></td>
-  <td><s:property value="devicenm" /></td>
-  <td><s:property value="os" /></td>
-  <td><s:property value="office" /></td>
-  <td><s:property value="other1" /></td>
+<s:form action="updateexec" >
+  <td><input type="text" name="deviceid" value="<s:property value="deviceid" />"></td>
+  <td><input type="text" name="devicenm" value="<s:property value="devicenm" />"></td>
+  <td><input type="text" name="os" value="<s:property value="os" />"></td>
+  <td><input type="text" name="office" value="<s:property value="office" />"></td>
+  <td><input type="text" name="other1" value="<s:property value="other1" />"></td>
+  <td><input type="submit" value="変更する"/></td>
+</s:form>
+<s:form action="deleteexec" >
+  <td><input type="hidden" name="deviceid" value="<s:property value="deviceid" />"></td>
+  <td><input type="submit" value="削除する"/></td>
+</s:form>
 </tr>
 </s:iterator>
 </table>
-<s:submit value="Finish"/>
-</s:form>
 
 </body>
 </html>
