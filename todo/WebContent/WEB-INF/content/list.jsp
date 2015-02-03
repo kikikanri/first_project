@@ -11,30 +11,21 @@
 
 <script type="text/javascript">
 <!--
-
 function check(){
 
-	if(window.confirm('送信してよろしいですか？')){ // 確認ダイアログを表示
-
-		return true; // 「OK」時は送信を実行
-
+	if(window.confirm('処理を実行しますがよろしいですか？')){
+		return true;
+	}else{
+		return false;
 	}
-	else{ // 「キャンセル」時の処理
-
-		window.alert('キャンセルされました'); // 警告ダイアログを表示
-		return false; // 送信を中止
-
-	}
-
 }
-
 // -->
 </script>
 
 </head>
 <body>
 
-<h2><img src="img/logo.gif" />機器管理一覧</h2>
+<h2><img src="img/logo.gif" />マスタ管理一覧</h2>
 <br /><br />
 
 
@@ -67,6 +58,7 @@ function check(){
 <div class="container">
 <table class="table">
 <tr>
+<td>NO</td>
 <td>端末NO</td>
 <td>端末名称</td>
 <td>OS名</td>
@@ -75,8 +67,9 @@ function check(){
 <td></td>
 <td></td>
 </tr>
-<s:iterator value="DeviceList">
+<s:iterator value="DeviceList" status="st">
 <tr>
+  <td><s:property value="#st.count"/></td>
 <form action="updateexec" onSubmit="return check()">
   <td><s:property value="deviceid" /></td>
   <input type="hidden" name="deviceid" value="<s:property value="deviceid" />">
