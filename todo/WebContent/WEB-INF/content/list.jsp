@@ -9,12 +9,36 @@
 
 <title>機器一覧</title>
 
+<script type="text/javascript">
+<!--
+
+function check(){
+
+	if(window.confirm('送信してよろしいですか？')){ // 確認ダイアログを表示
+
+		return true; // 「OK」時は送信を実行
+
+	}
+	else{ // 「キャンセル」時の処理
+
+		window.alert('キャンセルされました'); // 警告ダイアログを表示
+		return false; // 送信を中止
+
+	}
+
+}
+
+// -->
+</script>
+
 </head>
 <body>
 
-[アイコン]機器管理一覧<br /><br />
+<h2><img src="img/logo.gif" />機器管理一覧</h2>
+<br /><br />
 
 
+<font color="red"><s:actionerror /></font>
 
 <div class="container">
 <table class="table">
@@ -27,7 +51,7 @@
 <td></td>
 </tr>
 <tr>
-<form action="entryexec" >
+<form action="entryexec" onSubmit="return check()">
 <td><input type="text" name="deviceid" /></td>
 <td><input type="text" name="devicenm" /></td>
 <td><input type="text" name="os" /></td>
@@ -39,9 +63,6 @@
 </tr>
 </table>
 </div>
-
-
-<s:actionmessage  />
 
 <div class="container">
 <table class="table">
@@ -56,15 +77,16 @@
 </tr>
 <s:iterator value="DeviceList">
 <tr>
-<form action="updateexec" >
-  <td><input type="text" name="deviceid" value="<s:property value="deviceid" />"></td>
+<form action="updateexec" onSubmit="return check()">
+  <td><s:property value="deviceid" /></td>
+  <input type="hidden" name="deviceid" value="<s:property value="deviceid" />">
   <td><input type="text" name="devicenm" value="<s:property value="devicenm" />"></td>
   <td><input type="text" name="os" value="<s:property value="os" />"></td>
   <td><input type="text" name="office" value="<s:property value="office" />"></td>
   <td><input type="text" name="other1" value="<s:property value="other1" />"></td>
   <td><input type="submit" value="変更する"/></td>
 </form>
-<form action="deleteexec" >
+<form action="deleteexec" onSubmit="return check()">
   <input type="hidden" name="deviceid" value="<s:property value="deviceid" />">
   <td><input type="submit" value="削除する"/></td>
 </form>

@@ -1,20 +1,16 @@
 package todo.action;
 
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.InterceptorRef;
-import org.apache.struts2.convention.annotation.InterceptorRefs;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
 import todo.dao.Devices;
 import todo.dao.DevicesDao;
+import todo.tool.FixString;
 
+import com.mysql.jdbc.StringUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
-@InterceptorRefs({
-	@InterceptorRef(value="scopedModelDriven",params={"scope","session"}),
-	@InterceptorRef("defaultStack")
-})
 @Results({
 	  @Result(name="success", location ="list.jsp" ),
 	  @Result(name = "top",
@@ -24,7 +20,7 @@ import com.opensymphony.xwork2.ActionSupport;
           }
 	  	),
 })
-public class ToDoAction extends ActionSupport {
+public class AdminAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 
@@ -49,23 +45,27 @@ public class ToDoAction extends ActionSupport {
 	@Action("/entryexec")
 	public String entryexec() throws Exception {
 
+    	this.setDeviceid(FixString.encoding(deviceid));
+    	this.setDevicenm(FixString.encoding(devicenm));
+    	this.setOs(FixString.encoding(os));
+    	this.setOffice(FixString.encoding(office));
+    	this.setOther1(FixString.encoding(other1));
+
+    	if(!checkInputForm()){
+    		return "success";
+    	}
+
+
 	    DevicesDao todo = new DevicesDao();
 
 	    if(todo.isDeviceIDExist(this.getDeviceid())){
 	    	// メッセージセット
-	    	addActionError("IDありますよ");
-	    	addActionMessage("IDありますよ");
-
-	    	this.setDeviceid(new String(deviceid.getBytes("ISO-8859-1"), "UTF-8"));
-	    	this.setDevicenm(new String(devicenm.getBytes("ISO-8859-1"), "UTF-8"));
-	    	this.setOs(new String(os.getBytes("ISO-8859-1"), "UTF-8"));
-	    	this.setOffice(new String(office.getBytes("ISO-8859-1"), "UTF-8"));
-	    	this.setOther1(new String(other1.getBytes("ISO-8859-1"), "UTF-8"));
+	    	addActionError("端末IDは既に存在しています。");
 
 	    	return "success";
 	    }
 
-	    todo.entry( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
+	    boolean result = todo.entry( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
    		return "top";
 	}
 
@@ -73,9 +73,15 @@ public class ToDoAction extends ActionSupport {
 	@Action("/updateexec")
 	public String updateexec() throws Exception {
 
+    	this.setDeviceid(FixString.encoding(deviceid));
+    	this.setDevicenm(FixString.encoding(devicenm));
+    	this.setOs(FixString.encoding(os));
+    	this.setOffice(FixString.encoding(office));
+    	this.setOther1(FixString.encoding(other1));
+
 	    DevicesDao todo = new DevicesDao();
 
-	    todo.update( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
+	    boolean result = todo.update( this.getDeviceid(), this.getDevicenm(), this.getOs(), this.getOffice(), this.getOther1() );
    		return "top";
 	}
 
@@ -83,10 +89,25 @@ public class ToDoAction extends ActionSupport {
 	@Action("/deleteexec")
 	public String deleteexec() throws Exception {
 
+    	this.setDeviceid(FixString.encoding(deviceid));
+
 	    DevicesDao todo = new DevicesDao();
 
-	    todo.delete( this.getDeviceid());
+	    boolean result = todo.delete( this.getDeviceid());
    		return "top";
+	}
+
+	// checkForm
+	private boolean checkInputForm() throws Exception {
+
+		// deviceid
+		if(StringUtils.isNullOrEmpty(deviceid)){
+			addActionError("端末NOは入力必須です。");
+			return false;
+		}
+
+
+		return true;
 	}
 
 	public String getDeviceid() {
