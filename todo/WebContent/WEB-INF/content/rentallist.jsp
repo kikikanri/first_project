@@ -8,8 +8,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="/resources/demos/style.css" />
 
 <title>貸出し機器管理画面</title>
+
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<script>
+$(function() {
+  $.datepicker.setDefaults( $.datepicker.regional[ "ja" ] );
+  $( "#datepicker1" ).datepicker();
+  $( "#datepicker2" ).datepicker();
+});
+</script>
+
+<script src="js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 <!--
@@ -26,7 +41,6 @@ function check(){
 
 </head>
 <body>
-
 <h2><img src="img/logo.gif" />貸出し機器管理画面</h2>
 <br /><br />
 
@@ -44,8 +58,8 @@ function check(){
 <tr>
 <form action="rentryexec" onSubmit="return check()">
 <td><input type="text" name="user" /></td>
-<td><input type="date" name="takeoutdate" /></td>
-<td><input type="date" name="schedulereturndate" /></td>
+<td><input type="date" id="datepicker1" name="takeoutdate" /></td>
+<td><input type="date" id="datepicker2" name="schedulereturndate" /></td>
 <td>
 
 <select name="deviceid" id="deviceid">
@@ -97,10 +111,7 @@ function check(){
 </table>
 </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+
 
 
 </body>
