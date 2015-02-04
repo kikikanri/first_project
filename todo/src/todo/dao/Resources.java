@@ -20,12 +20,12 @@ public interface Resources extends Entity  {
 	public void setUser(String user);
 
 	@Default("")
-	public Date getTakeoutDate();
-	public void setTakeoutDate(Date takeoutdate);
+	public Date getTakeoutdate();
+	public void setTakeoutdate(Date takeoutdate);
 
 	@Default("")
-	public Date getScheduleReturnDate();
-	public void setScheduleReturnDate(String schedulereturndate);
+	public Date getSchedulereturndate();
+	public void setSchedulereturndate(Date schedulereturndate);
 
 	@Default("")
 	public String getDeviceid();
@@ -36,8 +36,8 @@ public interface Resources extends Entity  {
 	public void setDevicenm(String devicenm);
 
 	@Default("")
-	public Date getReturnDate();
-	public void setReturnDate(String returndate);
+	public Date getReturndate();
+	public void setReturndate(Date returndate);
 
 	@Default("0")
 	public int getReturnFlg();

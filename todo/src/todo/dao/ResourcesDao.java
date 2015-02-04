@@ -9,18 +9,22 @@ import net.java.ao.Query;
 public class ResourcesDao  {
 
 	// 追加
-	public boolean entry(String user, Date takeoutdate, String schedulereturndate,
+	public boolean entry(String user, Date takeoutdate, Date schedulereturndate,
 			String deviceid, String devicenm){
 
 		try {
+
+			// 端末名取得
+
+
 			Date createdate = new Date();
 			Date updatedate = new Date();
 
 			Resources resources = BaseDao.getInstance().getEntityManager().create(Resources.class);
 
 			resources.setUser(user);
-			resources.setTakeoutDate(takeoutdate);
-			resources.setScheduleReturnDate(schedulereturndate);
+			resources.setTakeoutdate(takeoutdate);
+			resources.setSchedulereturndate(schedulereturndate);
 			resources.setDeviceid(deviceid);
 			resources.setDevicenm(devicenm);
 			resources.setCreateDate(createdate);
@@ -40,7 +44,7 @@ public class ResourcesDao  {
 	}
 
 	// 更新
-	public boolean update(int no, String returndate){
+	public boolean update(String no, Date returndate){
 
 		try {
 
@@ -48,7 +52,7 @@ public class ResourcesDao  {
 
 			EntityManager manager = BaseDao.getInstance().getEntityManager();
 			Resources[] resources = manager.find(Resources.class, Query.select().where("no = ?", no));
-			resources[0].setReturnDate(returndate);
+			resources[0].setReturndate(returndate);
 			resources[0].setReturnFlg("1");
 			resources[0].setUpdateDate(updatedate);
 
@@ -91,7 +95,7 @@ public class ResourcesDao  {
 
 			EntityManager manager = BaseDao.getInstance().getEntityManager();
 
-			return BaseDao.getInstance().getEntityManager().find(Resources.class);
+			return BaseDao.getInstance().getEntityManager().find(Resources.class, Query.select().order("schedulereturndate desc"));
 
 		} catch (SQLException e) {
 		    System.out.println(e.getMessage());

@@ -133,5 +133,25 @@ public class DevicesDao  {
 
 	}
 
+	// 端末名取得
+	public String getDevicenm(String deviceid) throws SQLException{
+
+		try {
+
+			EntityManager manager = BaseDao.getInstance().getEntityManager();
+
+			Devices[] deviceids = BaseDao.getInstance().getEntityManager().find(Devices.class, Query.select().where("deviceid = ?", deviceid));
+
+			return deviceids[0].getDevicenm();
+
+		} catch (SQLException e) {
+		    System.out.println(e.getMessage());
+		    e.printStackTrace();
+		} catch (Exception ee){
+			ee.printStackTrace();
+		}
+		return "";
+
+	}
 
 }

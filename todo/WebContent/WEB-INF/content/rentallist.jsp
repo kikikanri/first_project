@@ -55,7 +55,7 @@ function check(){
 </select>
 
 </td>
-<td><input type="submit" value="これから借ります！(未実装)"/></td>
+<td><input type="submit" value="これから借ります"/></td>
 </form>
 
 </tr>
@@ -69,7 +69,7 @@ function check(){
 <td>NO</td>
 <td>利用者</td>
 <td>持ち出し日</td>
-<td>返却予定日</td>
+<td>返却予定日▼</td>
 <td>端末ID</td>
 <td>端末名</td>
 <td>返却日</td>
@@ -81,16 +81,16 @@ function check(){
   <td><s:property value="no" /></td>
   <input type="hidden" name="no" value="<s:property value="no" />">
   <td><s:property value="user" /></td>
-  <td><s:property value="takeoutdate" /></td>
-  <td><s:property value="schedulereturndate" /></td>
+  <td><s:date name="takeoutdate" format="yyyy/MM/dd" /></td>
+  <td><s:date name="schedulereturndate" format="yyyy/MM/dd" /></td>
   <td><s:property value="deviceid" /></td>
   <td><s:property value="devicenm" /></td>
-  <td><input type="date" name="returndate" value="<s:property value="returndate" />"></td>
-  <td><input type="submit" value="返却日を登録する(未実装)"/></td>
+  <td><input type="date" name="returndate" value="<s:date name="returndate" format="yyyy/MM/dd" />"></td>
+  <td><input type="submit" value="返却日を登録する"/></td>
 </form>
 <form action="rdeleteexec" onSubmit="return check()">
   <input type="hidden" name="no" value="<s:property value="no" />">
-  <td><input type="submit" value="削除する(未実装)"/></td>
+  <td><input type="submit" value="削除する"/></td>
 </form>
 </tr>
 </s:iterator>
